@@ -1,16 +1,12 @@
 window.addEventListener("load", function () {
 	
-	var souDOM = document.getElementById('formControle');
-	
-	console.log(document);
-	console.log(souDOM);
 	document.getElementById('age').addEventListener('input',verifAge);
 	document.getElementById('id').addEventListener('input',verifId);
 	document.getElementById('realPwd').addEventListener('input',isStrongPwd);
 	document.getElementById('confirmPwd').addEventListener('input',verifPwd);
 	document.getElementById('cgu').addEventListener('input',verifCGU);
 	document.getElementById('btnSubmit').addEventListener('click',verifSubmit);
-	
+	var progressBar = document.getElementById('progress');
 
 	var allFill = new Array([6]);
 	for(let i = 0; i < allFill.length; i++){
@@ -133,7 +129,7 @@ window.addEventListener("load", function () {
 		for(let i = 0; i < tab.length; i++){
 			if(tab[i]){somme += 20;}
 		}
-		
+		progressBar.value = somme;
 		if(somme == 100){
 			allFill[4] = true;
 		}else{
@@ -166,20 +162,16 @@ window.addEventListener("load", function () {
 	
 	function verifSubmit(){
 		sommeFill = 0;
-		console.log("SommeFill = " + sommeFill);
 		for(let i = 0; i < allFill.length; i++){
 			if(allFill[i]){
 				sommeFill++;
 			}
 		}
-		console.log("SommeFill = " + sommeFill);
 		if(sommeFill == 4){
 			document.getElementById("btnSubmit").disabled = false;
-			console.log("12");
 			
 		}else{
 			document.getElementById("btnSubmit").disabled = true;
-			console.log("13");
 		}
 	}
 });
